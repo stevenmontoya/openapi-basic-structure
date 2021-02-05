@@ -1,0 +1,65 @@
+components:
+  schemas:
+    UserContent:
+      type: object
+      properties:
+        name:
+          description: User name
+          type: string
+        email:
+          description: User email
+          type: string
+        password:
+          description: User password
+          type: string
+          format: password
+
+    UserInformation:
+      type: object
+      properties:
+        id:
+          description: User identifier
+          type: string
+          format: uuid
+        name:
+          description: User name
+          type: string
+        email:
+          description: User email
+          type: string
+        password:
+          description: User password
+          type: string
+
+  responses:
+    UsersResponse:
+      description: Users information
+      content:
+        application/json:
+          schema:
+            type: array
+            items: 
+              $ref: '#/components/schemas/UserInformation'
+
+    UserResponse:
+      description: User information
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserInformation'
+
+    ErrorResponse:
+      description: Error in the request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+              title:
+                type: string
+              detail:
+                type: string
+
+          

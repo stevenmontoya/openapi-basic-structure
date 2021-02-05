@@ -1,0 +1,47 @@
+get:
+  tags:
+    - user
+  summary: Get a user
+  description: Get method to retrieve a user
+  operationId: get-user
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      $ref: '../user/components.yml#/components/responses/UsersResponse'
+    '404':
+      $ref: '../user/components.yml#/components/responses/ErrorResponse'
+
+put:
+  tags:
+    - user
+  summary: Update a user
+  description: Put method to update a user
+  operationId: update-user
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../user/components.yml#/components/schemas/UserContent'
+  responses:
+    '200':
+      description: No content
+    '400':
+      $ref: '../user/components.yml#/components/responses/ErrorResponse'
+    '404':
+      $ref: '../user/components.yml#/components/responses/ErrorResponse'

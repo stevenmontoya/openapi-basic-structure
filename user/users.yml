@@ -1,0 +1,29 @@
+get:
+  tags:
+    - users
+  summary: Get all users 
+  description: Get method to retrieve all users
+  operationId: get-users
+  responses:
+    '200':
+      $ref: '../user/components.yml#/components/responses/UserResponse'
+    '400':
+      $ref: '../user/components.yml#/components/responses/ErrorResponse'
+
+post:
+  tags:
+    - users
+  summary: Create a user
+  description: Post method to create a new user
+  operationId: create-user
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../user/components.yml#/components/schemas/UserContent'
+  responses:
+    '201':
+      description: Created
+    '400':
+      $ref: '../user/components.yml#/components/responses/ErrorResponse'
